@@ -1,14 +1,15 @@
 const express = require('express')
 const multer = require('multer')
 const cloudinary = require('cloudinary')
-
+const upload = multer({ dest: 'uploads/' });
+require('dotenv').config()
    
 
 
 
 
 
-const port = 5000
+const port = process.env.PORT
 const app = express()
 
 app.use(express.json())
