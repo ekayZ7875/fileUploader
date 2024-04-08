@@ -21,7 +21,7 @@ cloudinary.config({
 
 app.post('/upload',upload.single('file') ,async(res,req) => {
     try{
-        const{ orginalname,filename,size } = req.file
+        const{Name,Size } = req.file
 
         // uploading file to cloudinary
 
@@ -32,10 +32,9 @@ app.post('/upload',upload.single('file') ,async(res,req) => {
             message:'file uploaded to cloudinary successfully'
         })
 
-        const insertion = await db('files').insert({
-            originalname,
-            filename: result.public_id,
-            size,
+        const insertion = await db('files_1').insert({
+            Name,
+            Size,
             created_at: new Date()
         }).returning('id')
 
