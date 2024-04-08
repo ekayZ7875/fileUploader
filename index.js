@@ -6,9 +6,6 @@ require('dotenv').config()
    
 
 
-
-
-
 const port = process.env.PORT
 const app = express()
 
@@ -50,10 +47,8 @@ app.post('/upload',upload.single('file') ,async(res,req) => {
         }  
     } catch(error){
         console.error(error)
-        res.send({
-            status:0,
-            message:'Some internal error occurred'
-        })
+        res.status(500).json({ error: 'Internal Server Error' });
+       
     }
 })
 
